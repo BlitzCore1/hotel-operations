@@ -38,21 +38,7 @@ public class Room
         this.numberOfBeds = numberOfBeds;
     }
 
-    public double getPrice()
-    {
-        double price = 0;
 
-        if (roomType.equalsIgnoreCase("king"))
-        {
-            price = 139.00;
-        }
-        else if (roomType.equalsIgnoreCase("double"))
-        {
-            price = 124.00;
-        }
-
-        return price;
-    }
 
     public void setPrice(double price)
     {
@@ -82,5 +68,18 @@ public class Room
     public boolean isAvailable()
     {
         return !isOccupied && !isDirty;
+    }
+    public void checkIn()
+    {
+        isOccupied = true;
+        isDirty = true;
+    }
+    public void checkOut()
+    {
+        isOccupied = false;
+    }
+    public void cleanroom()
+    {
+        isDirty = false;
     }
 }

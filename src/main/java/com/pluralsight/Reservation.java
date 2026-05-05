@@ -43,15 +43,25 @@ public class Reservation
         isWeekend = weekend;
     }
 
-    public double calculateReservationCost(Room room)
+    public double getPrice()
     {
-        double totalCost = room.getPrice() * numberOfNights;
+        double price = 124.00;
+
+        if (roomType.equalsIgnoreCase("king"))
+        {
+            price = 139.00;
+        }
         if (isWeekend)
         {
-            totalCost *= 1.1; // 10% increase for weekend stays
+            price *= 1.1; // 10% increase for weekend stays
         }
-        return totalCost;
+
+        return price;
     }
 
+    public double getReservationCost()
+    {
+        return getPrice() * numberOfNights;
+    }
 
 }

@@ -8,6 +8,7 @@ public class Main
         testRoomIsAvailable();
         testEmployeeWithoutOvertime();
         testEmployeeWithOvertime();
+        testGetReservationCost();
     }
 
     public static void testRoomIsAvailable()
@@ -73,5 +74,16 @@ public class Main
         System.out.println("Regular Pay: " + employee.getRegularPay());
         System.out.println("OverTime Pay: " + employee.getOverTimePay());
         System.out.println("Total Pay: " + employee.getTotalPay());
+    }
+
+    public static void testGetReservationCost()
+    {
+        Reservation reservation = new Reservation("double", 4, true);
+        System.out.println();
+        System.out.println();
+        System.out.println("-----------------------");
+        System.out.println("Reservation Cost");
+        System.out.println("-----------------------");
+        System.out.println("Reservation Cost: " + reservation.getReservationCost());
     }
 }
