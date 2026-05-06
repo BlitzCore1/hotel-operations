@@ -1,18 +1,17 @@
 package com.pluralsight;
 
 
-public class Main
-{
-    static void main()
-    {
-        testRoomIsAvailable();
-        testEmployeeWithoutOvertime();
-        testEmployeeWithOvertime();
-        testGetReservationCost();
+public class Main {
+    static void main() {
+//        testRoomIsAvailable();
+//        testEmployeeWithoutOvertime();
+//        testEmployeeWithOvertime();
+//        testGetReservationCost();
+        testPunchIn();
+        testPunchOut();
     }
 
-    public static void testRoomIsAvailable()
-    {
+    public static void testRoomIsAvailable() {
         Room room = new Room("King", 1, 139);
 
         System.out.println("When the room is created it should be available:");
@@ -24,8 +23,7 @@ public class Main
         System.out.println("Room is available: " + room.isAvailable());
     }
 
-    public static void testEmployeeWithoutOvertime()
-    {
+    public static void testEmployeeWithoutOvertime() {
         Employee employee = new Employee(1, "John", "Front Office", 15.00, 40);
 
         System.out.println();
@@ -47,17 +45,16 @@ public class Main
         System.out.println("-------------------------");
         System.out.println("Regular Hour Test");
         System.out.println("-------------------------");
-        System.out.println("Regular Hours Should be 40: " +  (40 == employee.getRegularHours()));
-        System.out.println("Regular Pay Should be 600: " +  (600 == employee.getRegularPay()));
+        System.out.println("Regular Hours Should be 40: " + (40 == employee.getRegularHours()));
+        System.out.println("Regular Pay Should be 600: " + (600 == employee.getRegularPay()));
         System.out.println("-------------------------");
         System.out.println("Overtime Test");
         System.out.println("-------------------------");
-        System.out.println("Overtime Hours Should be 0: " +  (0 == employee.getOverTimeHours()));
-        System.out.println("Overtime Pay Should be 0: " +  (0 == employee.getOverTimePay()));
+        System.out.println("Overtime Hours Should be 0: " + (0 == employee.getOverTimeHours()));
+        System.out.println("Overtime Pay Should be 0: " + (0 == employee.getOverTimePay()));
     }
 
-    public static void testEmployeeWithOvertime()
-    {
+    public static void testEmployeeWithOvertime() {
         Employee employee = new Employee(1, "John", "Front Office", 20.00, 50);
 
         System.out.println();
@@ -76,8 +73,7 @@ public class Main
         System.out.println("Total Pay: " + employee.getTotalPay());
     }
 
-    public static void testGetReservationCost()
-    {
+    public static void testGetReservationCost() {
         Reservation reservation = new Reservation("double", 4, true);
         System.out.println();
         System.out.println();
@@ -85,5 +81,29 @@ public class Main
         System.out.println("Reservation Cost");
         System.out.println("-----------------------");
         System.out.println("Reservation Cost: " + reservation.getReservationCost());
+    }
+
+    public static void testPunchIn() {
+        Employee employee = new Employee(1, "John", "Front Office", 20.00, 50);
+
+        System.out.println();
+        System.out.println();
+        System.out.println("-----------------------");
+        System.out.println("Punch In");
+        System.out.println("-----------------------");
+        System.out.println("Punching in at 9: " + employee.punchIn(9));
+//        System.out.println("Punching in at 0: " + employee.punchIn(0)); // expecting runtime error because 0 is not a valid hour
+//        System.out.println("Punching in at 25: " + employee.punchIn(25)); // expecting runtime error because 25 is not a valid hour
+    }
+
+    public static void testPunchOut() {
+        Employee employee = new Employee(1, "John", "Front Office", 20.00, 50);
+
+        System.out.println();
+        System.out.println();
+        System.out.println("-----------------------");
+        System.out.println("Punch Out");
+        System.out.println("-----------------------");
+        System.out.println("Punching out at 17: " + employee.punchOut(17));
     }
 }

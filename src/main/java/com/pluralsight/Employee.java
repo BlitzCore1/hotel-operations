@@ -1,5 +1,7 @@
 package com.pluralsight;
 
+import java.time.LocalTime;
+
 public class Employee
 {
     // constants
@@ -12,6 +14,7 @@ public class Employee
     private String department;
     private double payRate;
     private double hoursWorked;
+    private int startTime = 1;
 
     public Employee(int employeeId, String name, String department, double payRate, double hoursWorked) {
         this.employeeId = employeeId;
@@ -79,4 +82,44 @@ public class Employee
     public double getOverTimePay() {return getOverTimeHours() * payRate * OVERTIME_PAY;}
 
     public double getTotalPay() {return getRegularPay() + getOverTimePay();}
+
+    public int punchIn(int hour)
+    {
+        if (hour < 1 || hour > 24)
+        {
+            throw new RuntimeException("Clock in time has to be between 1 and 24");
+        }
+
+        return startTime = hour;
+    }
+
+    public int punchIn()
+    {
+        return LocalTime.now().getHour();
+    }
+
+     public int punchOut(int hour)
+     {
+         if (startTime == 0)
+         {
+             throw new RuntimeException("Must clock in before you can clock out");
+
+         }
+         if (hour < 1 || hour > 24)
+         {
+                throw new RuntimeException("Clock out time has to be between 1 and 24");
+         }
+
+         return hour - startTime;
+     }
+
+     public int punchOut()
+     {
+         if (startTime == 0)
+         {
+             throw new RuntimeException("Must clock in before you can clock out");
+
+         }
+         return LocalTime.now().getHour() - startTime;
+     }
 }
