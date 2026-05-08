@@ -14,7 +14,7 @@ public class Employee
     private String department;
     private double payRate;
     private double hoursWorked;
-    private int startTime = 1;
+    private int startTime;
 
     public Employee(int employeeId, String name, String department, double payRate, double hoursWorked) {
         this.employeeId = employeeId;
@@ -110,6 +110,7 @@ public class Employee
                 throw new RuntimeException("Clock out time has to be between 1 and 24");
          }
 
+         hoursWorked += hour - startTime;
          return hour - startTime;
      }
 
@@ -120,6 +121,7 @@ public class Employee
              throw new RuntimeException("Must clock in before you can clock out");
 
          }
+         hoursWorked += LocalTime.now().getHour() - startTime;
          return LocalTime.now().getHour() - startTime;
      }
 }

@@ -2,6 +2,12 @@ package com.pluralsight;
 
 public class Reservation
 {
+    // constants
+    private final double KING_PRICE = 139.0;
+    private final double DOUBLE_PRICE = 124.0;
+    private final double WEEKEND_MULTIPLIER = 1.1;
+
+    // private variables
     private String roomType;
     private int numberOfNights;
     private boolean isWeekend;
@@ -45,15 +51,15 @@ public class Reservation
 
     public double getPrice()
     {
-        double price = 124.00;
+        double price = DOUBLE_PRICE;
 
         if (roomType.equalsIgnoreCase("king"))
         {
-            price = 139.00;
+            price = KING_PRICE;
         }
         if (isWeekend)
         {
-            price *= 1.1; // 10% increase for weekend stays
+            price *= WEEKEND_MULTIPLIER; // 10% increase for weekend stays
         }
 
         return price;

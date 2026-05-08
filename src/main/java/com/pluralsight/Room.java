@@ -2,6 +2,7 @@ package com.pluralsight;
 
 public class Room
 {
+
     private String roomType;
     private int numberOfBeds;
     private double price;

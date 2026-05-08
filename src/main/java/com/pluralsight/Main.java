@@ -101,9 +101,14 @@ public class Main {
 
         System.out.println();
         System.out.println();
+        System.out.println("Punch In");
+        System.out.println("-----------------------");
+        System.out.println("Punching in at 9: " + employee.punchIn(9));
         System.out.println("-----------------------");
         System.out.println("Punch Out");
         System.out.println("-----------------------");
         System.out.println("Punching out at 17: " + employee.punchOut(17));
+
+        System.out.println("total hours worked:  " + employee.getHoursWorked());
     }
 }
